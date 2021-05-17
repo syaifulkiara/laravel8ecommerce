@@ -56,15 +56,15 @@ class AdminEditProductComponent extends Component
 	{
 		$this->validateOnly($fields,[
 			'name' 				=> 'required',
-			'slug' 				=> 'required|unique:products',
+			// 'slug' 				=> 'required|unique:products',
 			'short_description' => 'required',
 			'description' 		=> 'required',
 			'regular_price' 	=> 'required|numeric',
-			'sale_price'		=> 'numeric',
-			'SKU'				=> 'required',
+			// 'sale_price'		=> 'numeric',
+			// 'SKU'				=> 'required',
 			'stock_status' 		=> 'required',
 			'quantity' 			=> 'required|numeric',
-			'newimage' 			=> 'required|mimes:jpeg,png',
+			// 'newimage' 			=> 'required|mimes:jpeg,png',
 			'category_id'		=> 'required'
 		]);
 	}
@@ -73,15 +73,15 @@ class AdminEditProductComponent extends Component
 	{
 		$this->validate([
 			'name' 				=> 'required',
-			'slug' 				=> 'required|unique:products',
+			// 'slug' 				=> 'required|unique:products',
 			'short_description' => 'required',
 			'description' 		=> 'required',
 			'regular_price' 	=> 'required|numeric',
-			'sale_price'		=> 'numeric',
-			'SKU'				=> 'required',
+			// 'sale_price'		=> 'numeric',
+			// 'SKU'				=> 'required',
 			'stock_status' 		=> 'required',
 			'quantity' 			=> 'required|numeric',
-			'newimage' 			=> 'required|mimes:jpeg,png',
+			// 'newimage' 			=> 'required|mimes:jpeg,png',
 			'category_id'		=> 'required'
 		]);
 
