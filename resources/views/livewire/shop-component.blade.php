@@ -4,7 +4,7 @@
 
 			<div class="wrap-breadcrumb">
 				<ul>
-					<li class="item-link"><a href="{{url('/')}}" class="link">home</a></li>
+					<li class="item-link"><a href="{{url('/')}}" class="link">Home</a></li>
 					<li class="item-link"><span>Digital & Electronics</span></li>
 				</ul>
 			</div>
@@ -54,9 +54,34 @@
 
 					</div><!--end wrap shop control-->
 
+					<style>
+						.product-wish{
+							position: absolute;
+							top: 10%;
+							left: 0;
+							z-index: 90;
+							right: 30px;
+							text-align: right;
+							padding-top: 0;
+						}
+						.product-wish .fa{
+							color: #cbcbcb;
+							font-size: 32px;
+						}
+						.product-wish .fa:hover{
+							color: #ff7007;
+						}
+						.fill-heart{
+							color: #ff7007 !important;
+						}
+					</style>
+
 					<div class="row">
 
 						<ul class="product-list grid-products equal-container">
+							@php
+								$witems = Cart::instance('wishlist')->content()->pluck('id');
+							@endphp
 							@foreach ($products as $product)
 							<li class="col-lg-4 col-md-6 col-sm-6 col-xs-6 ">
 								<div class="product product-style-3 equal-elem ">
@@ -66,9 +91,16 @@
 										</a>
 									</div>
 									<div class="product-info">
-										<a href="#" class="product-name"><span>{{$product->name}}</span></a>
-										<div class="wrap-price"><span class="product-price">{{$product->regular_price}}</span></div>
+										<a href="{{route('product.details',['slug'=>$product->slug])}}" class="product-name"><span>{{$product->name}}</span></a>
+										<div class="wrap-price"><span class="product-price">Rp.{{$product->regular_price}}</span></div>
 										<a href="#" class="btn add-to-cart" wire:click.prevent="store({{$product->id}},'{{$product->name}}',{{$product->regular_price}})">Add To Cart</a>
+									<div class="product-wish">
+										@if($witems->contains($product->id))
+										<a href="#"><i class="fa fa-heart fill-heart"></i></a>
+										@else
+										<a href="#" wire:click.prevent="addToWishlist({{$product->id}},'{{$product->name}}',{{$product->regular_price}})"><i class="fa fa-heart"></i></a>
+										@endif
+									</div>
 									</div>
 								</div>
 							</li>
@@ -92,7 +124,7 @@
 
 				<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 sitebar">
 					<div class="widget mercado-widget categories-widget">
-						<h2 class="widget-title">All Categories</h2>
+						<h2 class="widget-title">Kategori</h2>
 						<div class="widget-content">
 							<ul class="list-category">
 								@foreach ($categories as $category)
@@ -160,7 +192,7 @@
 					</div><!-- Size -->
 
 					<div class="widget mercado-widget widget-product">
-						<h2 class="widget-title">Popular Products</h2>
+						<h2 class="widget-title">Produk Terlaris</h2>
 						<div class="widget-content">
 							<ul class="products">
 								<li class="product-item">

@@ -4,8 +4,8 @@
 
 			<div class="wrap-breadcrumb">
 				<ul>
-					<li class="item-link"><a href="{{url('/')}}" class="link">home</a></li>
-					<li class="item-link"><span>Product Categories</span></li>
+					<li class="item-link"><a href="{{url('/')}}" class="link">Home</a></li>
+					<li class="item-link"><span>Kategori Produk</span></li>
 					<li class="item-link"><span>{{$category_name}}</span></li>
 				</ul>
 			</div>
@@ -68,7 +68,7 @@
 									</div>
 									<div class="product-info">
 										<a href="#" class="product-name"><span>{{$product->name}}</span></a>
-										<div class="wrap-price"><span class="product-price">{{$product->regular_price}}</span></div>
+										<div class="wrap-price"><span class="product-price">Rp.{{$product->regular_price}}</span></div>
 										<a href="#" class="btn add-to-cart" wire:click.prevent="store({{$product->id}},'{{$product->name}}',{{$product->regular_price}})">Add To Cart</a>
 									</div>
 								</div>
